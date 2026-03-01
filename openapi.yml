@@ -5,7 +5,7 @@ info:
     Version 2 of the Dummy App Service API.
     This release introduces breaking changes, stricter authentication,
     and a redesigned order model.
-  version: 2.0.0
+  version: 1.0.0
   contact:
     name: Dummy API Team
     email: api@dummyapp.dev
