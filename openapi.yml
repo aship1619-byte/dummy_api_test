@@ -2,10 +2,10 @@ openapi: 3.0.3
 info:
   title: Dummy App Service API
   description: >
-    Dummy App Service API v2.2.0.
-    This release introduces a breaking change by removing an order
-    status enum value from the public response schema.
-  version: 2.2.0
+    Dummy App Service API v2.3.0.
+    This release introduces a breaking change by making the `currency`
+    field mandatory in order creation requests.
+  version: 2.3.0
   contact:
     name: Dummy API Team
     email: api@dummyapp.dev
@@ -149,6 +149,7 @@ components:
       required:
         - customerId
         - totalAmount
+        - currency   # 🚨 BREAKING CHANGE: now required
       properties:
         customerId:
           type: string
@@ -157,6 +158,7 @@ components:
           minimum: 0.01
         currency:
           type: string
+          example: USD
 
     OrderV2:
       type: object
@@ -185,7 +187,6 @@ components:
       properties:
         status:
           type: string
-          example: ok
         timestamp:
           type: string
           format: date-time
