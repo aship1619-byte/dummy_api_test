@@ -2,10 +2,10 @@ openapi: 3.0.3
 info:
   title: Dummy App Service API
   description: >
-    Dummy App Service API v2.1.0.
-    This release removes a user lookup endpoint as a breaking change
-    to reduce PII exposure.
-  version: 2.1.0
+    Dummy App Service API v2.2.0.
+    This release introduces a breaking change by removing an order
+    status enum value from the public response schema.
+  version: 2.2.0
   contact:
     name: Dummy API Team
     email: api@dummyapp.dev
@@ -47,9 +47,6 @@ paths:
                 $ref: "#/components/schemas/User"
         "401":
           description: Unauthorized
-
-  # 🚨 BREAKING CHANGE:
-  # GET /users/{userId} REMOVED
 
   /orders:
     post:
@@ -179,7 +176,6 @@ components:
             - CONFIRMED
             - SHIPPED
             - COMPLETED
-            - CANCELLED
         createdAt:
           type: string
           format: date-time
@@ -189,6 +185,7 @@ components:
       properties:
         status:
           type: string
+          example: ok
         timestamp:
           type: string
           format: date-time
